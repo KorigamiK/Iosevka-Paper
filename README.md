@@ -3,8 +3,9 @@ My Iosevka build which I stand by
 
 ## Glyphs
 
-![Screenshot 2025-03-23 at 00-59-13 Iosevka Customizer](https://github.com/user-attachments/assets/778fb34c-6c31-4ef5-8dac-bcb6e980d021)
+ AI Nat AI Nat![Screenshot 2025-03-26 at 03-25-09 Iosevka Customizer](https://github.com/user-attachments/assets/d13359ab-923f-4112-b4e7-231e8b0ea77b)
+
 
 ## Ligations
 
-![Screenshot 2025-03-23 at 00-59-54 Iosevka Customizer](https://github.com/user-attachments/assets/a5186d5e-9860-4e93-99b4-b4c56c92cf0e)
+![Screenshot 2025-03-26 at 03-25-22 Iosevka Customizer](https://github.com/user-attachments/assets/71b71a2c-c59e-4d63-93fd-2024eb9e026b)
