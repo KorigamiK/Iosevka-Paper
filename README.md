@@ -1,5 +1,6 @@
 # Iosevka-Paper
-My Iosevka build which I stand by
+
+Most of the inspirations come from Berkeley Mono and the IBM Plex mono with my personal tastes intact.
 
 ## Glyphs
 
