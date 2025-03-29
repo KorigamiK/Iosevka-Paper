@@ -43,7 +43,7 @@ jobs:
               working-directory: iosevka
               run: |
                   npm install
-                  npm run build -- contents::iosevka-custom
+                  npm run build -- contents::IosevkaPaper
 
             - name: Upload Built Fonts
               uses: actions/upload-artifact@v4
