@@ -46,7 +46,7 @@ jobs:
                   npm run build -- contents::iosevka-custom
 
             - name: Upload Built Fonts
-              uses: actions/upload-artifact@v3
+            - uses: actions/upload-artifact@v4
               with:
                   name: custom-iosevka-fonts
                   path: iosevka/dist/

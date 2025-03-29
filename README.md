@@ -4,8 +4,7 @@ Most of the inspirations come from Berkeley Mono and the IBM Plex mono with my p
 
 ## Glyphs
 
- AI Nat AI Nat![Screenshot 2025-03-26 at 03-25-09 Iosevka Customizer](https://github.com/user-attachments/assets/d13359ab-923f-4112-b4e7-231e8b0ea77b)
-
+[Screenshot 2025-03-26 at 03-25-09 Iosevka Customizer](https://github.com/user-attachments/assets/d13359ab-923f-4112-b4e7-231e8b0ea77b)
 
 ## Ligations
 
