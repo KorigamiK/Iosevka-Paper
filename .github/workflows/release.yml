@@ -45,23 +45,13 @@ jobs:
                   npm install
                   npm run build -- contents::IosevkaPaper
 
-            - name: Create Release
-              id: create_release
-              uses: actions/create-release@v1
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Release
+              uses: softprops/action-gh-release@v2
               with:
                   tag_name: v${{ github.run_number }}
-                  release_name: Release ${{ github.run_number }}
+                  name: Release ${{ github.run_number }}
+                  files: ./iosevka/dist/*
                   draft: false
                   prerelease: false
-
-            - name: Upload Release Assets
-              uses: actions/upload-release-asset@v1
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              with:
-                  upload_url: ${{ steps.create_release.outputs.upload_url }}
-                  asset_path: ./iosevka/dist/
-                  asset_name: iosevka-paper-fonts.zip
-                  asset_content_type: application/zip
+                  fail_on_unmatched_files: true
+                  token: ${{ secrets.GITHUB_TOKEN }}
