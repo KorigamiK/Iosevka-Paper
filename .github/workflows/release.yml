@@ -1,0 +1,53 @@
+name: Iosevka Paper Release Workflow
+
+on:
+    push:
+        paths:
+            - "private-build-plans.toml"
+    workflow_dispatch: # Allows manual triggering
+
+permissions:
+    contents: read
+    packages: write
+
+jobs:
+    build:
+        name: Build Custom Iosevka Font
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Your Repository
+              uses: actions/checkout@v4
+
+            - name: Checkout Iosevka Repository
+              uses: actions/checkout@v4
+              with:
+                  repository: be5invis/Iosevka
+                  path: iosevka
+
+            - name: Copy Build Plans
+              run: |
+                  cp private-build-plans.toml iosevka/private-build-plans.toml
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: lts/*
+
+            - name: Install ttfautohint
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y --no-install-recommends ttfautohint
+
+            - name: Build Custom Font
+              working-directory: iosevka
+              run: |
+                  npm install
+                  npm run build -- contents::iosevka-custom
+
+            - name: Upload Built Fonts
+              uses: actions/upload-artifact@v3
+              with:
+                  name: custom-iosevka-fonts
+                  path: iosevka/dist/
+                  if-no-files-found: error

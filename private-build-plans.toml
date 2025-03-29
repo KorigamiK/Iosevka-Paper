@@ -2,7 +2,7 @@
 family = "Iosevka Paper"
 spacing = "term"
 serifs = "sans"
-noCvSs = false
+noCvSs = true
 exportGlyphNames = false
 
   [buildPlans.IosevkaPaper.variants]
