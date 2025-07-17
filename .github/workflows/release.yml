@@ -1,0 +1,159 @@
+name: Iosevka Paper Release Workflow
+
+on:
+    push:
+        paths:
+            - "private-build-plans.toml"
+    workflow_dispatch:
+
+permissions:
+    contents: write
+    packages: write
+
+jobs:
+    build:
+        name: Build Custom Iosevka Font
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Your Repository
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0  # Fetch full history for proper versioning
+
+            - name: Checkout Iosevka Repository
+              uses: actions/checkout@v4
+              with:
+                  repository: be5invis/Iosevka
+                  path: iosevka
+
+            - name: Generate Version Info
+              id: version
+              run: |
+                  # Create semantic version based on date and commit
+                  DATE=$(date +%Y.%m.%d)
+                  SHORT_SHA=$(git rev-parse --short HEAD)
+                  VERSION="${DATE}-${SHORT_SHA}"
+                  echo "version=${VERSION}" >> $GITHUB_OUTPUT
+                  echo "tag=v${VERSION}" >> $GITHUB_OUTPUT
+                  echo "Generated version: ${VERSION}"
+
+            - name: Copy Build Plans
+              run: |
+                  cp private-build-plans.toml iosevka/private-build-plans.toml
+                  echo "Build plan copied successfully"
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: lts/*
+                  cache: 'npm'
+                  cache-dependency-path: iosevka/package-lock.json
+
+            - name: Install System Dependencies
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y --no-install-recommends ttfautohint
+
+            - name: Install Node Dependencies
+              working-directory: iosevka
+              run: |
+                  npm ci --prefer-offline --no-audit
+
+            - name: Build Custom Font
+              working-directory: iosevka
+              run: |
+                  echo "Starting font build for IosevkaPaper..."
+                  npm run build -- contents::IosevkaPaper
+                  echo "Font build completed successfully"
+
+            - name: Verify Build Output
+              run: |
+                  echo "Verifying build output..."
+                  if [ ! -d "iosevka/dist" ]; then
+                      echo "Error: dist directory not found!"
+                      exit 1
+                  fi
+                  
+                  FONT_COUNT=$(find iosevka/dist -name "*.ttf" -o -name "*.woff" -o -name "*.woff2" | wc -l)
+                  if [ "$FONT_COUNT" -eq 0 ]; then
+                      echo "Error: No font files found in build output!"
+                      exit 1
+                  fi
+                  
+                  echo "Found $FONT_COUNT font files"
+                  find iosevka/dist -name "*.ttf" -o -name "*.woff" -o -name "*.woff2" -o -name "*.zip" | head -10
+
+            - name: Prepare Release Files
+              run: |
+                  mkdir -p release-files
+                  
+                  # Copy all font files (TTF, WOFF, WOFF2) and ZIP archives
+                  find iosevka/dist -type f \( -name "*.ttf" -o -name "*.woff" -o -name "*.woff2" -o -name "*.zip" \) -exec cp {} release-files/ \;
+                  
+                  # Create a comprehensive ZIP archive of all fonts
+                  cd release-files
+                  if [ -n "$(ls -A .)" ]; then
+                      zip -r "IosevkaPaper-${{ steps.version.outputs.version }}.zip" *.ttf *.woff* 2>/dev/null || true
+                      echo "Release files prepared:"
+                      ls -la
+                      echo "Total files: $(ls -1 | wc -l)"
+                  else
+                      echo "Error: No files to release!"
+                      exit 1
+                  fi
+
+            - name: Generate Release Notes
+              id: release_notes
+              run: |
+                  cat > release_notes.md << EOF
+                  # Iosevka Paper Font Release ${{ steps.version.outputs.version }}
+                  
+                  ## 📦 What's Included
+                  - TTF font files for desktop use
+                  - WOFF/WOFF2 files for web use
+                  - Complete font family archive
+                  
+                  ## 🔧 Build Information
+                  - Built from commit: \`${{ github.sha }}\`
+                  - Build date: \`$(date -u +"%Y-%m-%d %H:%M:%S UTC")\`
+                  - Iosevka base version: Latest
+                  
+                  ## 📥 Installation
+                  1. Download the font files
+                  2. Install TTF files for desktop applications
+                  3. Use WOFF/WOFF2 files for web projects
+                  
+                  ## 🔄 Automatic Build
+                  This release was automatically generated when the build configuration was updated.
+                  EOF
+                  
+                  echo "release_notes<<EOF" >> $GITHUB_OUTPUT
+                  cat release_notes.md >> $GITHUB_OUTPUT
+                  echo "EOF" >> $GITHUB_OUTPUT
+
+            - name: Create GitHub Release
+              uses: softprops/action-gh-release@v2
+              with:
+                  tag_name: ${{ steps.version.outputs.tag }}
+                  name: "Iosevka Paper ${{ steps.version.outputs.version }}"
+                  body: ${{ steps.release_notes.outputs.release_notes }}
+                  files: release-files/*
+                  draft: false
+                  prerelease: false
+                  fail_on_unmatched_files: true
+                  token: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Build Summary
+              run: |
+                  echo "## 🎉 Build Complete!" >> $GITHUB_STEP_SUMMARY
+                  echo "Successfully built and released Iosevka Paper fonts" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "**Release:** ${{ steps.version.outputs.tag }}" >> $GITHUB_STEP_SUMMARY
+                  echo "**Files:** $(ls release-files | wc -l) font files" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "### 📁 Released Files:" >> $GITHUB_STEP_SUMMARY
+                  echo '```' >> $GITHUB_STEP_SUMMARY
+                  ls -la release-files >> $GITHUB_STEP_SUMMARY
+                  echo '```' >> $GITHUB_STEP_SUMMARY
+

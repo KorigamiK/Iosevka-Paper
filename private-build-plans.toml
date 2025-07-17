@@ -1,0 +1,53 @@
+[buildPlans.IosevkaPaper]
+family = "Iosevka Paper"
+spacing = "term"
+serifs = "sans"
+noCvSs = true
+exportGlyphNames = false
+
+  [buildPlans.IosevkaPaper.variants]
+  inherits = "ss01"
+
+    [buildPlans.IosevkaPaper.variants.design]
+    one = "no-base"
+    three = "flat-top-serifless"
+    four = "semi-open-serifless"
+    six = "straight-bar"
+    seven = "straight-serifless-crossbar"
+    eight = "two-circles"
+    nine = "straight-bar"
+    zero = "slashed"
+    capital-v = "curly-serifless"
+    capital-w = "curly-serifless"
+    f = "flat-hook-serifless"
+    i = "serifed"
+    j = "serifed"
+    l = "serifed"
+    m = "serifless"
+    t = "flat-hook"
+    v = "curly-serifless"
+    w = "curly-serifless"
+    z = "curly-serifless"
+    tittle = "square"
+    tilde = "low"
+    paren = "flat-arc"
+    brace = "curly-flat-boundary"
+    ampersand = "upper-open"
+    at = "fourfold-solid-inner"
+    percent = "rings-segmented-slash"
+    bar = "natural-slope"
+    decorative-angle-brackets = "middle"
+    lig-neq = "slightly-slanted"
+    lig-plus-chain = "with-notch"
+    lig-double-arrow-bar = "with-notch"
+    lig-single-arrow-bar = "with-notch"
+
+[buildPlans.IosevkaPaper.widths.Condensed]
+shape = 500
+menu = 3
+css = "condensed"
+
+[buildPlans.IosevkaPaper.widths.Normal]
+shape = 600
+menu = 5
+css = "normal"
