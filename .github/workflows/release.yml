@@ -88,20 +88,33 @@ jobs:
               run: |
                   mkdir -p release-files
                   
-                  # Copy all font files (TTF, WOFF, WOFF2) and ZIP archives
-                  find iosevka/dist -type f \( -name "*.ttf" -o -name "*.woff" -o -name "*.woff2" -o -name "*.zip" \) -exec cp {} release-files/ \;
-                  
-                  # Create a comprehensive ZIP archive of all fonts
-                  cd release-files
-                  if [ -n "$(ls -A .)" ]; then
-                      zip -r "IosevkaPaper-${{ steps.version.outputs.version }}.zip" *.ttf *.woff* 2>/dev/null || true
-                      echo "Release files prepared:"
-                      ls -la
-                      echo "Total files: $(ls -1 | wc -l)"
-                  else
-                      echo "Error: No files to release!"
+                  # Verify the expected directory structure exists
+                  if [ ! -d "iosevka/dist/IosevkaPaper" ]; then
+                      echo "Error: Expected dist/IosevkaPaper directory not found!"
+                      find iosevka/dist -type d -name "*IosevkaPaper*" || echo "No IosevkaPaper directories found"
                       exit 1
                   fi
+                  
+                  cd iosevka/dist/IosevkaPaper
+                  echo "Available font directories:"
+                  ls -la
+                  
+                  # Create ZIP for each directory that exists
+                  for dir in TTF TTF-Unhinted WOFF2 WOFF2-Unhinted; do
+                      if [ -d "$dir" ] && [ -n "$(ls -A "$dir")" ]; then
+                          echo "Creating package for $dir directory..."
+                          zip -r "../../release-files/IosevkaPaper-$dir-${{ steps.version.outputs.version }}.zip" "$dir/"
+                          file_count=$(find "$dir" -type f | wc -l)
+                          echo "Created $dir package with $file_count files"
+                      else
+                          echo "Skipping $dir (directory not found or empty)"
+                      fi
+                  done
+                  
+                  cd ../../release-files
+                  echo "Release packages prepared:"
+                  ls -la
+                  echo "Total packages: $(ls -1 *.zip | wc -l)"
 
             - name: Generate Release Notes
               id: release_notes
@@ -110,19 +123,34 @@ jobs:
                   # Iosevka Paper Font Release ${{ steps.version.outputs.version }}
                   
                   ## 📦 What's Included
-                  - TTF font files for desktop use
-                  - WOFF/WOFF2 files for web use
-                  - Complete font family archive
+                  Each ZIP file contains the complete directory structure with all font variants (Normal/Condensed widths, all weights and styles):
+                  
+                  - **IosevkaPaper-TTF-*.zip**: Hinted TTF fonts (recommended for desktop use)
+                  - **IosevkaPaper-TTF-Unhinted-*.zip**: Unhinted TTF fonts (smaller file sizes)
+                  - **IosevkaPaper-WOFF2-*.zip**: Hinted WOFF2 fonts (recommended for web use)
+                  - **IosevkaPaper-WOFF2-Unhinted-*.zip**: Unhinted WOFF2 fonts (smaller file sizes for web)
                   
                   ## 🔧 Build Information
                   - Built from commit: \`${{ github.sha }}\`
                   - Build date: \`$(date -u +"%Y-%m-%d %H:%M:%S UTC")\`
                   - Iosevka base version: Latest
+                  - Available formats: TTF (hinted/unhinted) and WOFF2 (hinted/unhinted)
                   
                   ## 📥 Installation
-                  1. Download the font files
-                  2. Install TTF files for desktop applications
-                  3. Use WOFF/WOFF2 files for web projects
+                  1. Download the package that matches your needs
+                  2. Extract the ZIP file to access the font directory
+                  3. Install or use the fonts from the extracted directory
+                  
+                  ## 🎯 Which Package to Choose?
+                  - **TTF (Hinted)**: Best for desktop applications, code editors, terminals - better rendering on Windows
+                  - **TTF (Unhinted)**: Smaller files, good for systems with modern font rendering
+                  - **WOFF2 (Hinted)**: Best for web projects where you want optimal rendering
+                  - **WOFF2 (Unhinted)**: Smallest files for web, good for bandwidth-conscious applications
+                  
+                  ## 📁 Font Variants Included
+                  Each package contains both **Normal** and **Condensed** width variants with these weights:
+                  - Thin, ExtraLight, Light, Regular, Medium, SemiBold, Bold, ExtraBold, Heavy
+                  - Each weight available in Regular, Italic, and Oblique styles
                   
                   ## 🔄 Automatic Build
                   This release was automatically generated when the build configuration was updated.
