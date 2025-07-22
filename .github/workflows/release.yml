@@ -86,7 +86,9 @@ jobs:
 
             - name: Prepare Release Files
               run: |
+                  # Create release directory in workspace root
                   mkdir -p release-files
+                  RELEASE_DIR="$(pwd)/release-files"
                   
                   # Verify the expected directory structure exists
                   if [ ! -d "iosevka/dist/IosevkaPaper" ]; then
@@ -103,7 +105,7 @@ jobs:
                   for dir in TTF TTF-Unhinted WOFF2 WOFF2-Unhinted; do
                       if [ -d "$dir" ] && [ -n "$(ls -A "$dir")" ]; then
                           echo "Creating package for $dir directory..."
-                          zip -r "../../release-files/IosevkaPaper-$dir-${{ steps.version.outputs.version }}.zip" "$dir/"
+                          zip -r "$RELEASE_DIR/IosevkaPaper-$dir-${{ steps.version.outputs.version }}.zip" "$dir/"
                           file_count=$(find "$dir" -type f | wc -l)
                           echo "Created $dir package with $file_count files"
                       else
@@ -111,7 +113,7 @@ jobs:
                       fi
                   done
                   
-                  cd ../../release-files
+                  cd "$RELEASE_DIR"
                   echo "Release packages prepared:"
                   ls -la
                   echo "Total packages: $(ls -1 *.zip | wc -l)"
