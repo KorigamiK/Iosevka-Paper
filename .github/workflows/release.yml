@@ -125,7 +125,7 @@ jobs:
                   # Iosevka Paper Font Release ${{ steps.version.outputs.version }}
                   
                   ## 📦 What's Included
-                  Each ZIP file contains the complete directory structure with all font variants (Normal/Condensed widths, all weights and styles):
+                  Each ZIP file contains the complete directory structure with all font variants (Normal [Condensed 416] and Extended [500] widths, all weights and styles):
                   
                   - **IosevkaPaper-TTF-*.zip**: Hinted TTF fonts (recommended for desktop use)
                   - **IosevkaPaper-TTF-Unhinted-*.zip**: Unhinted TTF fonts (smaller file sizes)
@@ -150,7 +150,7 @@ jobs:
                   - **WOFF2 (Unhinted)**: Smallest files for web, good for bandwidth-conscious applications
                   
                   ## 📁 Font Variants Included
-                  Each package contains both **Normal** and **Condensed** width variants with these weights:
+                  Each package contains **Normal (Condensed 416)** and **Extended (500)** width variants with these weights:
                   - Thin, ExtraLight, Light, Regular, Medium, SemiBold, Bold, ExtraBold, Heavy
                   - Each weight available in Regular, Italic, and Oblique styles
                   
