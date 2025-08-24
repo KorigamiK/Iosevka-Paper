@@ -1,11 +1,17 @@
 # Iosevka-Paper
 
 Most of the inspirations come from Berkeley Mono and the IBM Plex mono with my personal tastes intact.
+It employs the condensed font width by default which helps you be more efficient with your screen realestate. 
 
 ## Glyphs
 
-![Screenshot 2025-03-26 at 03-25-09 Iosevka Customizer](https://github.com/user-attachments/assets/d13359ab-923f-4112-b4e7-231e8b0ea77b)
+
+<img width="1370" height="981" alt="Screenshot_2025-08-24-19-57-25_5718" src="https://github.com/user-attachments/assets/e884baf5-464d-4d9f-8d7d-c300c10ceb42" />
+
+
+<img width="1370" height="981" alt="Screenshot_2025-08-24-19-57-50_3784" src="https://github.com/user-attachments/assets/6a4a4f51-cca1-41a1-8dfa-634328413c7f" />
+
 
 ## Ligations
 
-![Screenshot 2025-03-26 at 03-25-22 Iosevka Customizer](https://github.com/user-attachments/assets/71b71a2c-c59e-4d63-93fd-2024eb9e026b)
+<img width="1370" height="981" alt="Screenshot_2025-08-24-19-59-00_28555" src="https://github.com/user-attachments/assets/5fa6e3c2-0c1e-4db6-9e21-18465dc63232" />
