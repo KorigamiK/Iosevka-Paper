@@ -133,7 +133,7 @@ jobs:
 
                   Each package contains both widths — Normal (condensed, 416) and Extended (500) — in Regular, Medium, and Bold with italics.
 
-                  Preview: https://korigamik.github.io/Iosevka-Paper/
+                  Preview: https://font.korigamik.dev/
                   EOF
                   
                   echo "release_notes<<EOF" >> $GITHUB_OUTPUT

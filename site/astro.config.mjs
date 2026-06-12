@@ -1,7 +1,6 @@
 import { defineConfig } from "astro/config";
 
-// Deployed as a GitHub Pages project site
+// Deployed via GitHub Pages on a custom domain
 export default defineConfig({
-  site: "https://korigamik.github.io",
-  base: "/Iosevka-Paper",
+  site: "https://font.korigamik.dev",
 });
