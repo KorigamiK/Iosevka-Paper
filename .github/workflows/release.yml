@@ -122,40 +122,18 @@ jobs:
               id: release_notes
               run: |
                   cat > release_notes.md << EOF
-                  # Iosevka Paper Font Release ${{ steps.version.outputs.version }}
-                  
-                  ## 📦 What's Included
-                  Each ZIP file contains the complete directory structure with all font variants (Normal [Condensed 416] and Extended [500] widths, all weights and styles):
-                  
-                  - **IosevkaPaper-TTF-*.zip**: Hinted TTF fonts (recommended for desktop use)
-                  - **IosevkaPaper-TTF-Unhinted-*.zip**: Unhinted TTF fonts (smaller file sizes)
-                  - **IosevkaPaper-WOFF2-*.zip**: Hinted WOFF2 fonts (recommended for web use)
-                  - **IosevkaPaper-WOFF2-Unhinted-*.zip**: Unhinted WOFF2 fonts (smaller file sizes for web)
-                  
-                  ## 🔧 Build Information
-                  - Built from commit: \`${{ github.sha }}\`
-                  - Build date: \`$(date -u +"%Y-%m-%d %H:%M:%S UTC")\`
-                  - Iosevka base version: Latest
-                  - Available formats: TTF (hinted/unhinted) and WOFF2 (hinted/unhinted)
-                  
-                  ## 📥 Installation
-                  1. Download the package that matches your needs
-                  2. Extract the ZIP file to access the font directory
-                  3. Install or use the fonts from the extracted directory
-                  
-                  ## 🎯 Which Package to Choose?
-                  - **TTF (Hinted)**: Best for desktop applications, code editors, terminals - better rendering on Windows
-                  - **TTF (Unhinted)**: Smaller files, good for systems with modern font rendering
-                  - **WOFF2 (Hinted)**: Best for web projects where you want optimal rendering
-                  - **WOFF2 (Unhinted)**: Smallest files for web, good for bandwidth-conscious applications
-                  
-                  ## 📁 Font Variants Included
-                  Each package contains **Normal (Condensed 416)** and **Extended (500)** width variants with these weights:
-                  - Thin, ExtraLight, Light, Regular, Medium, SemiBold, Bold, ExtraBold, Heavy
-                  - Each weight available in Regular, Italic, and Oblique styles
-                  
-                  ## 🔄 Automatic Build
-                  This release was automatically generated when the build configuration was updated.
+                  Built from \`$(git rev-parse --short HEAD)\` against Iosevka mainline.
+
+                  | Package | Use |
+                  | --- | --- |
+                  | \`IosevkaPaper-TTF-*.zip\` | Editors and terminals (hinted, standard-DPI) |
+                  | \`IosevkaPaper-TTF-Unhinted-*.zip\` | High-DPI / Retina displays |
+                  | \`IosevkaPaper-WOFF2-*.zip\` | Web, hinted |
+                  | \`IosevkaPaper-WOFF2-Unhinted-*.zip\` | Web, smallest files |
+
+                  Each package contains both widths — Normal (condensed, 416) and Extended (500) — in Regular, Medium, and Bold with italics.
+
+                  Preview: https://korigamik.github.io/Iosevka-Paper/
                   EOF
                   
                   echo "release_notes<<EOF" >> $GITHUB_OUTPUT
@@ -176,13 +154,11 @@ jobs:
 
             - name: Build Summary
               run: |
-                  echo "## 🎉 Build Complete!" >> $GITHUB_STEP_SUMMARY
-                  echo "Successfully built and released Iosevka Paper fonts" >> $GITHUB_STEP_SUMMARY
+                  echo "## Build complete" >> $GITHUB_STEP_SUMMARY
                   echo "" >> $GITHUB_STEP_SUMMARY
                   echo "**Release:** ${{ steps.version.outputs.tag }}" >> $GITHUB_STEP_SUMMARY
-                  echo "**Files:** $(ls release-files | wc -l) font files" >> $GITHUB_STEP_SUMMARY
+                  echo "**Files:** $(ls release-files | wc -l) packages" >> $GITHUB_STEP_SUMMARY
                   echo "" >> $GITHUB_STEP_SUMMARY
-                  echo "### 📁 Released Files:" >> $GITHUB_STEP_SUMMARY
                   echo '```' >> $GITHUB_STEP_SUMMARY
                   ls -la release-files >> $GITHUB_STEP_SUMMARY
                   echo '```' >> $GITHUB_STEP_SUMMARY

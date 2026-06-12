@@ -1,0 +1,84 @@
+<section id="download">
+  <h2>Download</h2>
+  <p class="muted">Not sure which one? Take <strong class="mono">TTF</strong> for your editor or terminal.</p>
+  <table class="dl-table">
+    <thead><tr><th>Package</th><th>Best for</th><th class="dl-count-head">Downloads</th><th></th></tr></thead>
+    <tbody>
+      <tr data-asset="^IosevkaPaper-TTF-\d">
+        <td class="mono">TTF</td>
+        <td>Editors and terminals — hinted, standard-DPI displays</td>
+        <td class="dl-cell"><span class="dl-num mono">—</span><span class="dl-fill"></span></td>
+        <td><a class="dl-link" href="https://github.com/KorigamiK/Iosevka-Paper/releases/latest" target="_blank" rel="noopener">Download</a></td>
+      </tr>
+      <tr data-asset="^IosevkaPaper-TTF-Unhinted-">
+        <td class="mono">TTF Unhinted</td>
+        <td>High-DPI and Retina displays</td>
+        <td class="dl-cell"><span class="dl-num mono">—</span><span class="dl-fill"></span></td>
+        <td><a class="dl-link" href="https://github.com/KorigamiK/Iosevka-Paper/releases/latest" target="_blank" rel="noopener">Download</a></td>
+      </tr>
+      <tr data-asset="^IosevkaPaper-WOFF2-\d">
+        <td class="mono">WOFF2</td>
+        <td>Web — <span class="mono">@font-face</span>, hinted</td>
+        <td class="dl-cell"><span class="dl-num mono">—</span><span class="dl-fill"></span></td>
+        <td><a class="dl-link" href="https://github.com/KorigamiK/Iosevka-Paper/releases/latest" target="_blank" rel="noopener">Download</a></td>
+      </tr>
+      <tr data-asset="^IosevkaPaper-WOFF2-Unhinted-">
+        <td class="mono">WOFF2 Unhinted</td>
+        <td>Web — smallest files</td>
+        <td class="dl-cell"><span class="dl-num mono">—</span><span class="dl-fill"></span></td>
+        <td><a class="dl-link" href="https://github.com/KorigamiK/Iosevka-Paper/releases/latest" target="_blank" rel="noopener">Download</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Install</h3>
+  <div class="rel-list">
+    <details>
+      <summary>macOS</summary>
+      <div class="rel-notes"><ol>
+        <li>Download and unzip <span class="mono">IosevkaPaper-TTF-*.zip</span></li>
+        <li>Select all <span class="mono">.ttf</span> files and drag them into Font Book</li>
+      </ol></div>
+    </details>
+    <details>
+      <summary>Windows</summary>
+      <div class="rel-notes"><ol>
+        <li>Download and unzip <span class="mono">IosevkaPaper-TTF-*.zip</span></li>
+        <li>Select all <span class="mono">.ttf</span> files, right-click, <strong>Install for all users</strong></li>
+      </ol></div>
+    </details>
+    <details>
+      <summary>Linux</summary>
+      <div class="rel-notes"><ol>
+        <li>Download and unzip <span class="mono">IosevkaPaper-TTF-*.zip</span></li>
+        <li>Copy the <span class="mono">.ttf</span> files to <span class="mono">~/.local/share/fonts/</span></li>
+        <li>Run <span class="mono">fc-cache -fv</span></li>
+      </ol></div>
+    </details>
+    <details>
+      <summary>Web (@font-face)</summary>
+      <div class="rel-notes">
+        <p>Unzip <span class="mono">IosevkaPaper-WOFF2-*.zip</span> and declare:</p>
+        <pre class="preview-box mono">@font-face &lcub;
+  font-family: "Iosevka Paper";
+  src: url("IosevkaPaper-Regular.woff2") format("woff2");
+  font-weight: 400;
+&rcub;</pre>
+      </div>
+    </details>
+  </div>
+</section>
+
+<hr />
+
+<section id="build">
+  <h2>Build from Source</h2>
+  <pre class="preview-box mono">git clone https://github.com/KorigamiK/Iosevka-Paper.git
+git clone --depth 1 https://github.com/be5invis/Iosevka.git
+
+cp Iosevka-Paper/private-build-plans.toml Iosevka/
+cd Iosevka
+npm install
+npm run build -- contents::IosevkaPaper</pre>
+  <p class="muted">Output lands in <span class="mono">Iosevka/dist/IosevkaPaper/</span>.</p>
+</section>

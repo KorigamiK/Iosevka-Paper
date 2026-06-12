@@ -1,0 +1,63 @@
+---
+import "../styles/main.css";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const title = "Iosevka Paper — An Opinionated Monospace Font";
+const description =
+  "An opinionated condensed monospace font. Three weights, two widths, one way to look.";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="KorigamiK" />
+    <title>{title}</title>
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://korigamik.github.io/Iosevka-Paper/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="canonical" href="https://korigamik.github.io/Iosevka-Paper/" />
+    <link rel="icon" href={`${base}/crane.svg`} type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href={`${base}/css/fonts.css`} />
+    <script is:inline>
+      // Set theme before paint to avoid flash
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          var dark =
+            t === "dark" ||
+            (t !== "light" && matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.classList.add("dark");
+        } catch (_) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="bg-grid"><div class="bg-grid-lines"></div></div>
+    <div class="bg-grid-mask"></div>
+
+    <div class="page">
+      <slot />
+    </div>
+
+    <script
+      is:inline
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script
+      is:inline
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"
+      data-autoloader-path="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/"
+    ></script>
+    <script src="../scripts/main.js"></script>
+  </body>
+</html>

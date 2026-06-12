@@ -1,0 +1,7 @@
+node_modules/
+site/dist/
+site/.astro/
+
+# Populated by the showcase workflow from release assets
+site/public/fonts/
+site/public/release.json

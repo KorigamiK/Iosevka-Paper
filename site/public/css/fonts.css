@@ -1,0 +1,16 @@
+/* Self-hosted Iosevka Paper, pulled from the latest GitHub release.
+   Lives in public/ so the relative ../fonts/ URLs survive any base path. */
+
+@font-face { font-family: "Iosevka Paper"; src: url("../fonts/IosevkaPaper-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Iosevka Paper"; src: url("../fonts/IosevkaPaper-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Iosevka Paper"; src: url("../fonts/IosevkaPaper-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Iosevka Paper"; src: url("../fonts/IosevkaPaper-MediumItalic.woff2") format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "Iosevka Paper"; src: url("../fonts/IosevkaPaper-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Iosevka Paper"; src: url("../fonts/IosevkaPaper-BoldItalic.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
+
+@font-face { font-family: "Iosevka Paper Extended"; src: url("../fonts/IosevkaPaper-Extended.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Iosevka Paper Extended"; src: url("../fonts/IosevkaPaper-ExtendedItalic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Iosevka Paper Extended"; src: url("../fonts/IosevkaPaper-ExtendedMedium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Iosevka Paper Extended"; src: url("../fonts/IosevkaPaper-ExtendedMediumItalic.woff2") format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "Iosevka Paper Extended"; src: url("../fonts/IosevkaPaper-ExtendedBold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Iosevka Paper Extended"; src: url("../fonts/IosevkaPaper-ExtendedBoldItalic.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }

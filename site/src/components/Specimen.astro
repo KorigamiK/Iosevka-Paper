@@ -1,0 +1,48 @@
+---
+// Tractor-feed printout specimen, an homage to the Berkeley Mono docs sheet —
+// rendered live in Iosevka Paper.
+---
+
+<section id="specimen">
+  <h2>Specimen</h2>
+  <div class="sheet">
+    <div class="sheet-margin" aria-hidden="true"></div>
+    <div class="sheet-body mono">
+      <div class="sheet-head">
+        <strong>PAPER &amp; CRANE<br />BUSINESS MACHINES INC.</strong>
+        <strong class="right">SECTION 12.6<br />DEC 1986</strong>
+      </div>
+      <div class="sheet-box"><strong>API DOCUMENTATION<br />MACHINE MX-4000</strong></div>
+      <p class="sheet-line"><strong>CONFIRM TRANSACTION</strong></p>
+      <div class="rule double"></div>
+      <pre class="sheet-pre">[POST]      /v2/TX/:ID/CONFIRM</pre>
+      <div class="rule"></div>
+      <pre class="sheet-pre">RESPONSE    JSON
+STATUS      202 ACCEPTED
+DATA        &lcub;
+                "ID":     "TX_19BCA2004CD1478EAE",
+                "STATUS": "SUCCESSFUL",
+                "TIME":   "1646069894",
+                "METHOD": "CARD.AMEX"
+                "MX_ID":  "MX_4000_AD328FC8"
+            &rcub;</pre>
+      <div class="rule"></div>
+      <p class="sheet-line">Once payment method has been provided, send a POST request with
+the following information to confirm and process payment. After a
+transaction, a "SUCCESSFUL" status indicates that the transaction
+has been authorized by the TELEX routing service and the
+transaction ID will be included in the webhook response object.</p>
+      <p class="sheet-line">For additional information about webhooks, see page number 1206.</p>
+      <p class="sheet-line">If machine returns a busy status, send a POST request to
+/v2/TX/:ID/MODEM_RESET.</p>
+      <p class="sheet-line">At the time of printing, MX-5000 machines are in beta testing.</p>
+      <div class="rule"></div>
+      <div class="sheet-foot">
+        <span>CANADA</span>
+        <strong class="maas"><em>Machines as a Service™</em></strong>
+        <span>Page 340</span>
+      </div>
+    </div>
+  </div>
+  <p class="muted center">Real text, not an image — select it.</p>
+</section>

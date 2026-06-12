@@ -1,0 +1,73 @@
+<section id="glyphs">
+  <h2>Glyphs</h2>
+  <p class="muted">Hover for the reasoning.</p>
+  <div class="glyph-grid mono">
+    <span class="glyph-cell" title="Tall, slashed — never an O">0</span>
+    <span class="glyph-cell" title="No base serif — never an l">1</span>
+    <span class="glyph-cell" title="Two circles, geometric">8</span>
+    <span class="glyph-cell" title="Crossing tail">Q</span>
+    <span class="glyph-cell" title="Standing leg, serifless">R</span>
+    <span class="glyph-cell" title="Bilateral inward serifs">C</span>
+    <span class="glyph-cell" title="Hooked inward serif">G</span>
+    <span class="glyph-cell" title="Curly, serifless">W</span>
+    <span class="glyph-cell" title="Serifed — never a 1 or l">i</span>
+    <span class="glyph-cell" title="Serifed — never a 1 or I">l</span>
+    <span class="glyph-cell" title="Flat hook">t</span>
+    <span class="glyph-cell" title="Flat hook, serifless">f</span>
+    <span class="glyph-cell" title="Motion serifs">x</span>
+    <span class="glyph-cell" title="Curly, serifless">k</span>
+    <span class="glyph-cell" title="Fourfold">@</span>
+    <span class="glyph-cell" title="Penta, mid-height">*</span>
+    <span class="glyph-cell" title="Rings with segmented slash">%</span>
+    <span class="glyph-cell" title="Upper-open">&amp;</span>
+    <span class="glyph-cell" title="Flat arc">( )</span>
+    <span class="glyph-cell" title="Corner question">?</span>
+  </div>
+
+  <h3>Pangrams</h3>
+  <div class="preview-box mono">The quick brown fox jumps over the lazy dog.
+Sphinx of black quartz, judge my vow.
+Pack my box with five dozen liquor jugs.
+<em>How vexingly quick daft zebras jump!</em>
+0123456789 oO0 iIlL1 g9qCGQ ~-+=&gt;</div>
+
+  <h3>Ligatures</h3>
+  <div class="glyph-grid mono lig">
+    <span class="glyph-cell">-&gt;</span><span class="glyph-cell">=&gt;</span><span class="glyph-cell">&lt;-</span><span class="glyph-cell">&lt;=</span><span class="glyph-cell">&gt;=</span>
+    <span class="glyph-cell">!=</span><span class="glyph-cell">==</span><span class="glyph-cell">===</span><span class="glyph-cell">::</span><span class="glyph-cell">:=</span>
+    <span class="glyph-cell">&lt;&lt;</span><span class="glyph-cell">&gt;&gt;</span><span class="glyph-cell">|&gt;</span><span class="glyph-cell">&lt;|&gt;</span><span class="glyph-cell">&lt;-&gt;</span>
+    <span class="glyph-cell">++</span><span class="glyph-cell">--</span><span class="glyph-cell">//</span><span class="glyph-cell">/*</span><span class="glyph-cell">*/</span>
+  </div>
+
+  <h3>Terminal</h3>
+  <div class="terminal">
+    <div class="terminal-bar">
+      <span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span>
+      <span class="terminal-path mono">~/dev — zsh</span>
+      <div class="terminal-tabs">
+        <button class="chip active" data-term-tab="cli">CLI</button>
+        <button class="chip" data-term-tab="boxes">Boxes</button>
+      </div>
+    </div>
+    <div class="terminal-body mono">
+      <pre class="terminal-panel active" data-term-panel="cli"><span class="prompt">~/dev $</span> exa -l --git
+drwxr-xr-x   - ori  12 Jun  9:41  -- src/
+.rw-r--r-- 1.2k ori  12 Jun  9:41  -M private-build-plans.toml
+.rw-r--r--  482 ori  12 Jun  9:40  -- README.md
+
+<span class="prompt">~/dev $</span> cargo build --release
+   Compiling paper v0.1.0 (~/dev)
+    Finished `release` profile [optimized] in 2.41s
+
+<span class="prompt">~/dev $</span> curl -LO …/IosevkaPaper-TTF.zip
+████████████████████░░░░░░  76%  3.1M/s</pre>
+      <pre class="terminal-panel" data-term-panel="boxes">┌───────┬──────────────┬───────┐   ╔════════╦═══════╗
+│ Width │ Family       │ Units │   ║ Slope  ║ Angle ║
+├───────┼──────────────┼───────┤   ╠════════╬═══════╣
+│ Norm  │ Paper        │  416  │   ║ Upright║   0°  ║
+│ Ext   │ Paper Ext    │  500  │   ║ Italic ║  9.4° ║
+└───────┴──────────────┴───────┘   ╚════════╩═══════╝
+ ▲ ▼ ◀ ▶   █ ▓ ▒ ░   ● ○ ◉ ◎   ← ↑ → ↓</pre>
+    </div>
+  </div>
+</section>
