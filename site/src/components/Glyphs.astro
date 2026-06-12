@@ -39,35 +39,21 @@ Pack my box with five dozen liquor jugs.
     <span class="glyph-cell">++</span><span class="glyph-cell">--</span><span class="glyph-cell">//</span><span class="glyph-cell">/*</span><span class="glyph-cell">*/</span>
   </div>
 
-  <h3>Terminal</h3>
-  <div class="terminal">
-    <div class="terminal-bar">
-      <span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span>
-      <span class="terminal-path mono">~/dev — zsh</span>
-      <div class="terminal-tabs">
-        <button class="chip active" data-term-tab="cli">CLI</button>
-        <button class="chip" data-term-tab="boxes">Boxes</button>
-      </div>
-    </div>
-    <div class="terminal-body mono">
-      <pre class="terminal-panel active" data-term-panel="cli"><span class="prompt">~/dev $</span> exa -l --git
+  <h3>In the terminal</h3>
+  <pre class="preview-box cli"><span class="prompt">~/dev $</span> exa -l --git
 drwxr-xr-x   - ori  12 Jun  9:41  -- src/
 .rw-r--r-- 1.2k ori  12 Jun  9:41  -M private-build-plans.toml
 .rw-r--r--  482 ori  12 Jun  9:40  -- README.md
 
-<span class="prompt">~/dev $</span> cargo build --release
-   Compiling paper v0.1.0 (~/dev)
-    Finished `release` profile [optimized] in 2.41s
-
 <span class="prompt">~/dev $</span> curl -LO …/IosevkaPaper-TTF.zip
 ████████████████████░░░░░░  76%  3.1M/s</pre>
-      <pre class="terminal-panel" data-term-panel="boxes">┌───────┬──────────────┬───────┐   ╔════════╦═══════╗
+
+  <h3>Box drawing</h3>
+  <pre class="preview-box boxes">┌───────┬──────────────┬───────┐   ╔════════╦═══════╗
 │ Width │ Family       │ Units │   ║ Slope  ║ Angle ║
 ├───────┼──────────────┼───────┤   ╠════════╬═══════╣
 │ Norm  │ Paper        │  416  │   ║ Upright║   0°  ║
 │ Ext   │ Paper Ext    │  500  │   ║ Italic ║  9.4° ║
 └───────┴──────────────┴───────┘   ╚════════╩═══════╝
  ▲ ▼ ◀ ▶   █ ▓ ▒ ░   ● ○ ◉ ◎   ← ↑ → ↓</pre>
-    </div>
-  </div>
 </section>

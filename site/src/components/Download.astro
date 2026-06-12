@@ -7,66 +7,39 @@
       <tr data-asset="^IosevkaPaper-TTF-\d">
         <td class="mono">TTF</td>
         <td>Editors and terminals — hinted, standard-DPI displays</td>
-        <td class="dl-cell"><span class="dl-num mono">—</span><span class="dl-fill"></span></td>
+        <td><span class="dl-num mono">—</span></td>
         <td><a class="dl-link" href="https://github.com/KorigamiK/Iosevka-Paper/releases/latest" target="_blank" rel="noopener">Download</a></td>
       </tr>
       <tr data-asset="^IosevkaPaper-TTF-Unhinted-">
         <td class="mono">TTF Unhinted</td>
         <td>High-DPI and Retina displays</td>
-        <td class="dl-cell"><span class="dl-num mono">—</span><span class="dl-fill"></span></td>
+        <td><span class="dl-num mono">—</span></td>
         <td><a class="dl-link" href="https://github.com/KorigamiK/Iosevka-Paper/releases/latest" target="_blank" rel="noopener">Download</a></td>
       </tr>
       <tr data-asset="^IosevkaPaper-WOFF2-\d">
         <td class="mono">WOFF2</td>
         <td>Web — <span class="mono">@font-face</span>, hinted</td>
-        <td class="dl-cell"><span class="dl-num mono">—</span><span class="dl-fill"></span></td>
+        <td><span class="dl-num mono">—</span></td>
         <td><a class="dl-link" href="https://github.com/KorigamiK/Iosevka-Paper/releases/latest" target="_blank" rel="noopener">Download</a></td>
       </tr>
       <tr data-asset="^IosevkaPaper-WOFF2-Unhinted-">
         <td class="mono">WOFF2 Unhinted</td>
         <td>Web — smallest files</td>
-        <td class="dl-cell"><span class="dl-num mono">—</span><span class="dl-fill"></span></td>
+        <td><span class="dl-num mono">—</span></td>
         <td><a class="dl-link" href="https://github.com/KorigamiK/Iosevka-Paper/releases/latest" target="_blank" rel="noopener">Download</a></td>
       </tr>
     </tbody>
   </table>
 
   <h3>Install</h3>
-  <div class="rel-list">
-    <details>
-      <summary>macOS</summary>
-      <div class="rel-notes"><ol>
-        <li>Download and unzip <span class="mono">IosevkaPaper-TTF-*.zip</span></li>
-        <li>Select all <span class="mono">.ttf</span> files and drag them into Font Book</li>
-      </ol></div>
-    </details>
-    <details>
-      <summary>Windows</summary>
-      <div class="rel-notes"><ol>
-        <li>Download and unzip <span class="mono">IosevkaPaper-TTF-*.zip</span></li>
-        <li>Select all <span class="mono">.ttf</span> files, right-click, <strong>Install for all users</strong></li>
-      </ol></div>
-    </details>
-    <details>
-      <summary>Linux</summary>
-      <div class="rel-notes"><ol>
-        <li>Download and unzip <span class="mono">IosevkaPaper-TTF-*.zip</span></li>
-        <li>Copy the <span class="mono">.ttf</span> files to <span class="mono">~/.local/share/fonts/</span></li>
-        <li>Run <span class="mono">fc-cache -fv</span></li>
-      </ol></div>
-    </details>
-    <details>
-      <summary>Web (@font-face)</summary>
-      <div class="rel-notes">
-        <p>Unzip <span class="mono">IosevkaPaper-WOFF2-*.zip</span> and declare:</p>
-        <pre class="preview-box mono">@font-face &lcub;
-  font-family: "Iosevka Paper";
-  src: url("IosevkaPaper-Regular.woff2") format("woff2");
-  font-weight: 400;
-&rcub;</pre>
-      </div>
-    </details>
-  </div>
+  <table class="install-table">
+    <tbody>
+      <tr><td class="mono">macOS</td><td>unzip, select the <span class="mono">.ttf</span> files, drag into Font Book</td></tr>
+      <tr><td class="mono">Windows</td><td>select all <span class="mono">.ttf</span> files → right-click → Install for all users</td></tr>
+      <tr><td class="mono">Linux</td><td><span class="mono">cp *.ttf ~/.local/share/fonts/ &amp;&amp; fc-cache -fv</span></td></tr>
+      <tr><td class="mono">Web</td><td>take the WOFF2 package and declare <span class="mono">@font-face</span> per file</td></tr>
+    </tbody>
+  </table>
 </section>
 
 <hr />

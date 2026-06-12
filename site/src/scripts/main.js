@@ -42,7 +42,7 @@ applyTheme(currentTheme());
 // ── Width switcher ────────────────────────────────────────────────────
 
 const WIDTH_KEY = "iosevka-paper-width";
-const widthOpts = document.querySelectorAll("#width-switcher .seg-opt");
+const widthOpts = document.querySelectorAll("[data-width]");
 
 function applyWidth(width) {
   document.documentElement.classList.toggle("ext", width === "ext");
@@ -60,18 +60,6 @@ try {
   const saved = localStorage.getItem(WIDTH_KEY);
   if (saved) applyWidth(saved);
 } catch {}
-
-// ── Terminal tabs ─────────────────────────────────────────────────────
-
-document.querySelectorAll("[data-term-tab]").forEach((tab) => {
-  tab.addEventListener("click", () => {
-    const wrap = tab.closest(".terminal");
-    wrap.querySelectorAll("[data-term-tab]").forEach((t) => t.classList.remove("active"));
-    wrap.querySelectorAll("[data-term-panel]").forEach((p) => p.classList.remove("active"));
-    tab.classList.add("active");
-    wrap.querySelector(`[data-term-panel="${tab.dataset.termTab}"]`)?.classList.add("active");
-  });
-});
 
 // ── Try It editor ─────────────────────────────────────────────────────
 
@@ -292,21 +280,15 @@ function applyRelease(release) {
   const tagEl = document.getElementById("release-tag");
   if (tagEl && release.tag_name) tagEl.textContent = release.tag_name;
 
-  const rows = Array.from(document.querySelectorAll("tr[data-asset]"));
-  const matched = rows.map((row) => {
+  document.querySelectorAll("tr[data-asset]").forEach((row) => {
     const re = new RegExp(row.dataset.asset);
-    return { row, asset: release.assets.find((a) => re.test(a.name)) };
-  });
-
-  const max = Math.max(...matched.map((m) => m.asset?.download_count ?? 0));
-  matched.forEach(({ row, asset }) => {
+    const asset = release.assets.find((a) => re.test(a.name));
     if (!asset) return;
     if (asset.browser_download_url) {
       row.querySelector(".dl-link").href = asset.browser_download_url;
     }
-    if (typeof asset.download_count === "number" && max > 0) {
+    if (typeof asset.download_count === "number") {
       row.querySelector(".dl-num").textContent = asset.download_count.toLocaleString();
-      row.querySelector(".dl-fill").style.width = `${(asset.download_count / max) * 100}%`;
     }
   });
 }
