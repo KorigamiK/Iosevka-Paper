@@ -109,6 +109,9 @@ exportGlyphNames = false
     lig-double-arrow-bar = "with-notch"
     lig-single-arrow-bar = "with-notch"
 
+  [buildPlans.IosevkaPaper.ligations]
+  inherits = "dlig"
+
 [buildPlans.IosevkaPaper.weights.Regular]
 shape = 400
 menu = 400
