@@ -32,6 +32,8 @@ const description =
             t === "dark" ||
             (t !== "light" && matchMedia("(prefers-color-scheme: dark)").matches);
           if (dark) document.documentElement.classList.add("dark");
+          if (localStorage.getItem("iosevka-paper-width") === "ext")
+            document.documentElement.classList.add("ext");
         } catch (_) {}
       })();
     </script>
@@ -42,6 +44,12 @@ const description =
 
     <div class="page">
       <slot />
+    </div>
+
+    <div class="width-float mono" role="group" aria-label="Font width">
+      <span>Width</span>
+      <button class="chip active" data-width="normal">Default</button>
+      <button class="chip" data-width="ext">Extended</button>
     </div>
 
     <script

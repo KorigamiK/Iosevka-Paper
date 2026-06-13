@@ -385,11 +385,23 @@ th, td { padding: 0.5rem 0.75rem 0.5rem 0; border-bottom: 1px solid var(--border
 
 /* ── Weights waterfall ─────────────────────────────────────────────── */
 
-.width-toggle {
+.width-float {
+  position: fixed;
+  right: 1rem; bottom: 1rem;
+  z-index: 20;
   display: flex; align-items: center; gap: 0.35rem;
-  margin: 0.75rem 0 1rem;
+  padding: 0.4rem 0.55rem;
+  background: var(--term-bg);
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--text-2);
 }
-.width-toggle .muted { margin-right: 0.4rem; }
+.width-float span { margin-right: 0.25rem; user-select: none; }
+.width-float .chip { background: var(--bg); }
+.width-float .chip.active { background: var(--accent); }
+@media (max-width: 40rem) {
+  .width-float { right: 0.5rem; bottom: 0.5rem; }
+}
 
 .wt-list { border-top: 1px solid var(--border); }
 .wt-row {
